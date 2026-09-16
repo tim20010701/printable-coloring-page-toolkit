@@ -1,0 +1,32 @@
+{
+  "name": "printable-coloring-page-toolkit",
+  "version": "1.0.0",
+  "description": "Reference data, checklists, and a dependency-free JavaScript module for turning photos into printable black-and-white coloring pages.",
+  "type": "module",
+  "main": "tools/photo-to-line-art.js",
+  "exports": {
+    ".": "./tools/photo-to-line-art.js"
+  },
+  "files": [
+    "tools",
+    "data",
+    "checklists",
+    "comparisons"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "coloring-page",
+    "line-art",
+    "edge-detection",
+    "sobel",
+    "image-processing",
+    "printable",
+    "canvas"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
