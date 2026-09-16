@@ -16,6 +16,7 @@ and easy to recompute, so they are written down here instead of being re-derived
 | `checklists/printable-coloring-page-checklist.md` | Step-by-step checklist from picking a photo to printing it |
 | `comparisons/a4-vs-us-letter.md` | What actually differs between the two page sizes, with the arithmetic |
 | `tools/photo-to-line-art.js` | Zero-dependency ES module: photo to black-and-white line art |
+| `test/photo-to-line-art.test.mjs` | 12 unit tests for the module, no dependencies |
 
 ## The data
 
@@ -56,6 +57,18 @@ That is a deliberate simplification — it makes the control behave predictably 
 photos, at the cost of not being adaptive to image contrast.
 
 Because nothing leaves the browser, a photo passed to this module is not uploaded anywhere.
+
+## Tests
+
+```sh
+node --test
+```
+
+12 tests cover the output invariants (RGBA length, opaque alpha, strictly black-or-white
+output), the behaviour that matters in use (flat areas become paper, edges become ink, a
+uniform image produces no ink at all, `invert` is the exact complement), and the monotonic
+properties of the two controls (raising `detail` or `thickness` never reduces the amount of
+ink). They run on synthetic pixel data, so no browser, canvas, or image files are needed.
 
 ## Why this is here
 
